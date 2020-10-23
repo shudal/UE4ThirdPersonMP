@@ -1,0 +1,17 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
+#include "ThirdPersonMPGameMode.h"
+#include "ThirdPersonMPCharacter.h"
+#include "UObject/ConstructorHelpers.h"
+
+#include "Blueprint/UserWidget.h"
+
+AThirdPersonMPGameMode::AThirdPersonMPGameMode()
+{
+	// set default pawn class to our Blueprinted character
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/ThirdPersonCPP/Blueprints/ThirdPersonCharacter"));
+	if (PlayerPawnBPClass.Class != NULL)
+	{
+		DefaultPawnClass = PlayerPawnBPClass.Class;
+	}
+} 
